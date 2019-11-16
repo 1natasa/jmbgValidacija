@@ -92,10 +92,50 @@ namespace JmbgValidacija
                 long k = ostatak;
                 Console.WriteLine("Kontrolna cifra " + k);
 
+                //cifre za kontrolnu cifru
 
+                long ostatak2; 
 
+                long a= jmbgVr / 1000000000000;
+                ostatak2= jmbgVr % 1000000000000;
 
+                long b = ostatak2 / 100000000000;
+                ostatak2 = ostatak2 % 100000000000;
 
+                long v= ostatak2 / 10000000000;
+                ostatak2= ostatak2 % 10000000000;
+
+                long g= ostatak2 / 1000000000;
+                ostatak2 = ostatak2 % 1000000000;
+
+                long d= ostatak2 / 100000000;
+                ostatak2 = ostatak2 % 100000000;
+
+                long dj = ostatak2 / 10000000;
+                ostatak2 = ostatak2 % 10000000;
+
+                long e1 = ostatak2 / 1000000;
+                ostatak2 = ostatak2 % 1000000;
+
+                long zj= ostatak2 / 100000;
+                ostatak2 = ostatak2 % 100000;
+
+                long z= ostatak2 / 10000;
+                ostatak2 = ostatak2 % 10000;
+
+                long i = ostatak2 / 1000;
+                ostatak2 = ostatak2 % 1000;
+
+                long j = ostatak2 / 100;
+                ostatak2 = ostatak2 % 100;
+
+                long k1 = ostatak2 / 10;
+                ostatak2 = ostatak2 / 10;
+
+                long l = ostatak2;
+
+                long formula = 11 - ((7 * (a + e1) + 6 * (b + zj) + 5 * (v + z) + 4 * (g + i) + 3 * (d + j) + 2 * (dj + k)) % 11);
+                Console.WriteLine("Formula : " + formula);
 
                 if (txtBjmbgVrednost.Text.Length != 13)
                 {
@@ -453,6 +493,27 @@ namespace JmbgValidacija
                 {
                     MessageBox.Show("Pol nije validan");
                 }
+
+
+                //kontrolna cifra
+
+
+                if (k >= 1 && k <= 9)
+                {
+                    formula = k;
+                }
+                else if (k > 9)
+                {
+                    formula = 0;
+                }
+                else
+                {
+                    MessageBox.Show("Kontrolna cifra nije dobra!");
+                }
+
+                Console.WriteLine("Formula :" + formula);
+                lblKontrolnaCifraJ.Content = formula;
+
 
                 lblDan.Visibility = Visibility.Visible;
                 lblMesec.Visibility = Visibility.Visible;
