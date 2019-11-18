@@ -90,7 +90,14 @@ namespace JmbgValidacija
                 Console.WriteLine("Ostatak " + ostatak);
 
                 long ggg = ostatak / 1000000;
-                ggg = 1000 + ggg;
+                if (ggg <= 100)
+                {
+                    ggg = 2000 + ggg;
+                }
+                else {
+                    ggg = 1000 + ggg;
+                }
+                
                 ostatak = ostatak % 1000000;
 
                 Console.WriteLine("Godina " + ggg);
@@ -162,7 +169,7 @@ namespace JmbgValidacija
                     tacnost = false;
                 }
 
-                if (ggg < 1800)
+                if (ggg >2019)
                 {
                     MessageBox.Show("Godina ne sme da bude veca od 2019");
                     tacnost4 = false;
@@ -172,6 +179,8 @@ namespace JmbgValidacija
                 {
                     tacnost4 = true;
                 }
+
+
                 if (ggg % 4 == 0)
                 {
                     if (ggg % 100 != 0 || ggg % 400 == 0)
