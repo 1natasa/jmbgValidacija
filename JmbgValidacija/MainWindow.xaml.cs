@@ -53,6 +53,7 @@ namespace JmbgValidacija
             bool tacnost2 = false; 
             bool tacnost3 = false;
             bool tacnost4 = false;
+            bool tacnost5 = false;
             
             try
             {
@@ -117,7 +118,7 @@ namespace JmbgValidacija
                 long k = ostatak;
                 Console.WriteLine("Kontrolna cifra " + k);
 
-                //cifre za kontrolnu cifru
+                //cifre za kontrolnu cifru   ABVGDĐEŽZIJKL
 
                 long ostatak2;
 
@@ -159,14 +160,25 @@ namespace JmbgValidacija
 
                 long l = ostatak2;
 
-                long formula = 11 - ((7 * (a + e1) + 6 * (b + zj) + 5 * (v + z) + 4 * (g + i) + 3 * (d + j) + 2 * (dj + k)) % 11);
+                long formula = 11 - ((7 * (a + e1) + 6 * (b + zj) + 5 * (v + z) + 4 * (g + i) + 3 * (d + j) + 2 * (dj + k1)) % 11);
                 Console.WriteLine("Formula : " + formula);
 
+                if (txtBoxIme.Text.Length < 1 || txtBoxPrezime.Text.Length < 1 || txtBjmbgVrednost.Text.Length < 1)
+                {
 
+                    MessageBox.Show("Popunite sva polja!");
+                    tacnost5 = false;
+
+                }
+                else
+                {
+                    tacnost5 = true;
+                }
                 if (txtBjmbgVrednost.Text.Length != 13)
                 {
                     MessageBox.Show("Jmbg mora da ima 13 cifara");
                     tacnost = false;
+                    return;
                 }
 
                 if (ggg >2019)
@@ -640,26 +652,33 @@ namespace JmbgValidacija
                 //kontrolna cifra
 
 
-                if (k >= 1 && k <= 9)
+                if (formula >= 1 && formula <= 9)
                 {
-                    formula = k;
-                    tacnost3 = true;
+                    
+                    l = formula;
+                    
                 }
-                else if (k > 9)
+                else if (formula > 9)
                 {
-                    formula = 0;
+                    l = 0;
+                    
+                }
+                 
+                if (l == k)
+                {
+                    
                     tacnost3 = true;
                 }
                 else
                 {
                     MessageBox.Show("Kontrolna cifra nije dobra!");
-                    tacnost3 = true;
+                    tacnost3 = false;
                 }
 
                 Console.WriteLine("Formula :" + formula);
-                lblKontrolnaCifraJ.Content = formula;
+                lblKontrolnaCifraJ.Content = k;
 
-                if (tacnost == true && tacnost1 == true && tacnost2 == true && tacnost3 == true && tacnost4==true)
+                if (tacnost == true && tacnost1 == true && tacnost2 == true && tacnost3 == true && tacnost4==true && tacnost5==true)
                 {
                     lblDan.Visibility = Visibility.Visible;
                     lblMesec.Visibility = Visibility.Visible;
