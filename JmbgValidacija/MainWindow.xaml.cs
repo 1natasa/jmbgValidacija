@@ -185,6 +185,7 @@ namespace JmbgValidacija
                 {
                     MessageBox.Show("Godina ne sme da bude veca od 2019");
                     tacnost4 = false;
+                    return;
 
                 }
                 else
@@ -200,13 +201,14 @@ namespace JmbgValidacija
                         //prestupna
                         switch (mm)
                         {
-                            case 1: case 3: case 5: case 7: case 8: case 10: case 12: if (dd > 31) { MessageBox.Show("Ovaj mesec ne sme da ima vise od 31 dan"); tacnost1 = false; } else { tacnost1 = true; }; break;
-                            case 4: case 6: case 9: case 11: if (dd > 30) { MessageBox.Show("Ovaj mesec ne sme da ima vise od 30 dana"); tacnost1 = false; } else { tacnost1 = true; }; break;
+                            case 1: case 3: case 5: case 7: case 8: case 10: case 12: if (dd > 31) { MessageBox.Show("Ovaj mesec ne sme da ima vise od 31 dan"); tacnost1 = false; return; } else { tacnost1 = true; }; break;
+                            case 4: case 6: case 9: case 11: if (dd > 30) { MessageBox.Show("Ovaj mesec ne sme da ima vise od 30 dana"); tacnost1 = false; return; } else { tacnost1 = true; }; break;
                             case 2:
                                 if (dd > 29)
                                 {
                                     MessageBox.Show("Februar ne sme da ima vise od 29 dana");
                                     tacnost1 = false;
+                                    return;
                                 }
                                 else { tacnost1 = true; }; break;
                             default: MessageBox.Show("Datum nije validan"); tacnost1 = false; break;
@@ -227,7 +229,7 @@ namespace JmbgValidacija
                             case 12:
                                 if (dd > 31)
                                 {
-                                    MessageBox.Show("Ovaj mesec ne sme da ima vise od 31 dan"); tacnost1 = false;
+                                    MessageBox.Show("Ovaj mesec ne sme da ima vise od 31 dan"); tacnost1 = false; return;
                                 }
                                 else { tacnost1 = true; }; break;
                             case 4:
@@ -239,13 +241,14 @@ namespace JmbgValidacija
                                     MessageBox.Show("Ovaj mesec ne sme da ima vise od 30 dana");
 
                                     tacnost1 = false;
+                                    return;
                                 }
                                 else { tacnost1 = true; }
                                 break;
                             case 2:
                                 if (dd > 28)
                                 {
-                                    MessageBox.Show("Februar ne sme da ima vise od 28 dana"); tacnost1 = false;
+                                    MessageBox.Show("Februar ne sme da ima vise od 28 dana"); tacnost1 = false; return;
                                 }
                                 else { tacnost1 = true; }; break;
                             default: MessageBox.Show("Datum nije validan"); tacnost1 = false; break;
@@ -269,6 +272,7 @@ namespace JmbgValidacija
                             {
                                 MessageBox.Show("Ovaj mesec ne sme da ima vise od 31 dan");
                                 tacnost1 = false;
+                                return;
                             }
                             else { tacnost1 = true; }; break;
                         case 4:
@@ -279,6 +283,7 @@ namespace JmbgValidacija
                             {
                                 MessageBox.Show("Ovaj mesec ne sme da ima vise od 30 dana");
                                 tacnost1 = false;
+                                return;
                             }
                             else { tacnost1 = true; }
                             break;
@@ -287,6 +292,7 @@ namespace JmbgValidacija
                             {
                                 MessageBox.Show("Februar ne sme da ima vise od 28 dana");
                                 tacnost1 = false;
+                                return;
                             }
                             else { tacnost1 = true; }; break;
                         default: MessageBox.Show("Datum nije validan"); tacnost1 = false; break;
@@ -646,6 +652,7 @@ namespace JmbgValidacija
                 {
                     MessageBox.Show("Pol nije validan");
                     tacnost2 = false;
+                    return;
                 }
 
 
